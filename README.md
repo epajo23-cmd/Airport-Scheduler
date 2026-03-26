@@ -26,20 +26,9 @@ It demonstrates:
 
 ---
 
-##  Project Structure
-src/
-├── model/ # Core entities (Flight, Runway, Schedule)
-├── scheduler/ # Scheduling logic and algorithms
-├── utils/ # Helper functions
-└── main/ # Entry point
-
-
----
 
 ## Technologies Used
-
-- Java (or your language — change if needed)
-- Object-Oriented Programming
+- Python
 - Basic AI / scheduling logic
 
 ---
