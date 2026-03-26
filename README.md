@@ -1,43 +1,63 @@
-# Airport Scheduling System
+# Intelligent Airport Runway Scheduling Agent
 
-An Airport Scheduling System developed as part of an AI course project by Eden Pajo(github.com/epajo23-cmd) and Thomas Kroj(github.com/tthomas2513. The system simulates airport operations by managing flight schedules, runway allocation, and time-slot organization while avoiding conflicts.
+## Group Members
 
----
-
-## Features
-
-- Schedule flights with specific time slots
-- Allocate runways efficiently
-- Detect and prevent scheduling conflicts
-- Manage multiple flights simultaneously
-- Optimize airport traffic flow
+- Thomas Kroj
+- Eden Pajo
 
 ---
 
-## Project Focus
+## Project Overview
 
-This project focuses on solving a **constraint-based scheduling problem**, where multiple flights must be assigned resources (runways and time slots) without overlap.
+This project implements an **intelligent agent** for airport runway scheduling as part of the CEN 352 term project.
 
-It demonstrates:
-- Algorithmic problem solving
-- Resource allocation strategies
-- Conflict detection and resolution
-- Structured system design
+The agent integrates **two different AI techniques** taught in the course:
 
----
+1. **Statistical Learning (Machine Learning)**  
+   A classification model is trained on historical flight data to predict the probability that a flight will experience a **departure delay greater than 15 minutes**.
 
-
-## Technologies Used
-- Python
-- Basic AI / scheduling logic
+2. **Planning / Scheduling**  
+   The predicted delay risk is used to make rational scheduling decisions by determining the order in which flights are assigned to a single runway.  
+   The intelligent scheduling strategy is compared against a **First-Come-First-Served (FCFS)** baseline.
 
 ---
 
-## How to Run
+## AI Approach Summary
 
-1. Clone the repository:
-```bash
-git clone https://github.com/your-username/airport-scheduler.git
-2.Open the project in your IDE (IntelliJ recommended)
-3.Run the main file:Main.java
+- **Sensors:**  
+  Flight attributes (airline, origin airport, destination airport, scheduled departure time, day information, distance) and the current flight queue.
 
+- **Decision Process:**  
+  A machine learning classifier predicts delay risk for each flight.  
+  A scheduling policy prioritizes flights with higher predicted delay risk.
+
+- **Actuators:**  
+  Selection of the flight ordering for runway departure.
+
+---
+
+## Installation
+
+Install the required Python dependencies:
+
+pip install -r requirements.txt
+
+Dataset
+The project uses the Flight Delays and Cancellations (2015) dataset from Kaggle.
+https://www.kaggle.com/datasets/usdot/flight-delays?select=flights.csv
+
+The dataset file flights.csv should be added in the repository under:
+data/flights.csv
+
+Running the Project
+
+Train the model
+python model/train.py
+
+Evaluate the model
+python model/evaluate.py
+
+Run the Streamlit application
+streamlit run app.py
+
+The Streamlit interface allows interactive comparison between FCFS scheduling and the intelligent scheduling agent.
